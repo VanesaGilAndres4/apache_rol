@@ -1,0 +1,10 @@
+---
+- name: Reiniciar apache
+  ansible.builtin.service:
+    name: apache2
+    state: restarted
+  become: true
+
+- name: Mostrar mensaje
+  ansible.builtin.debug:
+    msg: "Se ha creado el fichero /tmp/prueba.txt"

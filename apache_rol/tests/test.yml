@@ -1,0 +1,6 @@
+---
+- name: Prueba apache rol
+  hosts: localhost
+  become: true
+  roles:
+    - apache_rol

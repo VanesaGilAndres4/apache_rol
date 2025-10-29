@@ -1,0 +1,27 @@
+---
+- name: Instalar apache
+  ansible.builtin.apt:
+    name: apache2
+    state: present
+    update_cache: true
+  become: true
+  tags:
+    - apache
+
+- name: Iniciar y habilitar el servicio Apache
+  ansible.builtin.service:
+    name: apache2
+    state: started
+    enabled: true
+  notify: restart_apache
+  tags:
+    - apache
+
+- name: Crear un fichero
+  ansible.builtin.file:
+    path: /tmp/prueba.txt
+    state: touch
+    mode: '0775'
+  notify: show_test_message
+  tags:
+    - test
